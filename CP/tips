@@ -1,0 +1,21 @@
+✅ Always use fast input (BufferedReader + StringTokenizer)
+
+✅ Collect output in StringBuilder and print once
+
+✅ Use ArrayDeque for both stack and queue
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+    // ArrayDeque can be used as both stack and queue as it implements Deque interface and it faster 
+
+
+static final int MOD = 1_000_000_007;   // 10^9 + 7  ✅ MOST USED
+static final int INF = (int)1e9;        // 1,000,000,000 ( Infinity for int )
+static final long INF_L = (long)1e18;   // 1,000,000,000,000,000,000 ( Infinity for long )
+
+✅ Always use long for large numbers to avoid overflow
+
+✅ Always use .equals() for string comparison instead of ==
+
+
+
+

@@ -1,0 +1,13 @@
+int x = ch - '0'; // character to Integer ASCII of character - ASCII of '0'
+char c = (char)(x + '0'); // Integer to character  (ASCII of '0' + Integer)
+String rev = new StringBuilder(s).reverse().toString(); // Reverse a string
+String[] parts = s.split("\\s+"); // Split by whitespace (handles multiple spaces)
+// Frequency array for lowercase letters
+int[] freq = new int[26];
+for (char c : s.toCharArray()) freq[c - 'a']++;
+// Circular array index
+int newIndex = (currentIndex + shift + n) % n; // where n is the length of the array
+//In normal circular array traversal
+int nextIndex = (i + 1) % n;
+int prevIndex = (i - 1 + n) % n;
+
