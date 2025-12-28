@@ -1,9 +1,9 @@
-package BinarySearch;
-//https://codeforces.com/edu/course/2/lesson/6/1/practice/contest/283911/problem/B
+
+//https://codeforces.com/edu/course/2/lesson/6/1/practice/contest/283911/problem/D
 import java.util.*;
 import java.io.*;
 
-public class ClosestToLeft {
+public class FastSearch {
     static class IO {
         BufferedReader br;
         StringTokenizer st;
@@ -42,9 +42,23 @@ public class ClosestToLeft {
         void flush() { out.flush(); }
     }
 
-    public static int binarySeach(long[] arr,int l,int r,long key){
-              int mid = 0;
-        while(l<=r){
+    public static int binarySeachlt(long[] arr,int l,int r,long key){
+        int mid = 0;
+        while(l <= r){
+             mid = l+(r-l)/2;
+            if(arr[mid] >= key){
+                r = mid-1;
+            }else{
+                l = mid+1;
+            }
+        }
+        
+        return l;
+
+    }
+     public static int binarySeachgt(long[] arr,int l,int r,long key){
+        int mid = 0;
+        while(l <= r){
              mid = l+(r-l)/2;
             if(arr[mid] <= key){
                 l = mid+1;
@@ -60,24 +74,23 @@ public class ClosestToLeft {
     public static void main(String[] args) {
         Scanner  in = new Scanner(System.in);
         int size = (int) in.nextLong();
-        long k = in.nextLong();
+      
         long[] arr = new long[size];
         for (int i = 0; i < size; i++) {
             arr[i] = in.nextLong();
         }
-        
+          long k = in.nextLong();
         StringBuilder sb = new StringBuilder();
         int l = 0;
         int r = size-1;
-    
+       Arrays.sort(arr);
        while(k-- > 0){
-            long val = in.nextLong();
-            int idx = binarySeach(arr,l,r,val);
-            if(idx != -1){
-                sb.append(idx+1+"\n");
-            }else{
-                sb.append("0\n");
-            }
+            long v1 = in.nextLong();
+            long v2 = in.nextLong();
+            int idx1 = binarySeachlt(arr,l,r,v1);
+            int idx2 = binarySeachgt(arr,l,r,v2);
+            sb.append((idx2-idx1+1)+"\n");
+          
         }
 
 

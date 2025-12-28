@@ -1,9 +1,9 @@
-package BinarySearch;
-//https://codeforces.com/edu/course/2/lesson/6/1/practice/contest/283911/problem/B
+
+//https://codeforces.com/edu/course/2/lesson/6/1/practice/contest/283911/problem/C
 import java.util.*;
 import java.io.*;
 
-public class ClosestToLeft {
+public class ClosestToRight {
     static class IO {
         BufferedReader br;
         StringTokenizer st;
@@ -46,14 +46,13 @@ public class ClosestToLeft {
               int mid = 0;
         while(l<=r){
              mid = l+(r-l)/2;
-            if(arr[mid] <= key){
-                l = mid+1;
-            }else{
+            if(arr[mid] >= key){
                 r = mid-1;
+            }else{
+                l = mid+1;
             }
         }
-        
-        return r;
+        return l;
 
     }
 
@@ -73,16 +72,14 @@ public class ClosestToLeft {
        while(k-- > 0){
             long val = in.nextLong();
             int idx = binarySeach(arr,l,r,val);
-            if(idx != -1){
+            if(idx != size){
                 sb.append(idx+1+"\n");
             }else{
-                sb.append("0\n");
-            }
+                sb.append(size+1+"\n");
         }
 
-
-    System.out.println(sb.toString());
-
     }
+        System.out.println(sb.toString());
 }
 
+}
