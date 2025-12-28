@@ -1,10 +1,6 @@
-package Contests;
-import java.io.*;
 import java.util.*;
-
-
-public class Main {
-    static class IO {
+import java.io.*;
+class IO {
         BufferedReader br;
         StringTokenizer st;
         PrintWriter out;
@@ -14,8 +10,8 @@ public class Main {
             out = new PrintWriter(System.out);
         }
 
-        // Input methods
-        String sol() { // single word
+        
+        String sol() { 
             while (st == null || !st.hasMoreTokens()) {
                 try { st = new StringTokenizer(br.readLine()); }
                 catch (IOException e) { e.printStackTrace(); }
@@ -28,40 +24,39 @@ public class Main {
         float nextFloat() { return Float.parseFloat(sol()); }
         double nextDouble() { return Double.parseDouble(sol()); }
         char nextChar() { return sol().charAt(0); }
-        String next() { return sol(); } // single word
-        String nextLine() { // full line
+        String next() { return sol(); } 
+        String nextLine() { 
             String str = "";
             try { str = br.readLine(); }
             catch (IOException e) { e.printStackTrace(); }
             return str;
         }
 
-        // Output methods
+    
         void print(Object o) { out.print(o); }
         void println(Object o) { out.println(o); }
         void flush() { out.flush(); }
     }
-
+public class DiceCombinations {
+    static long inff= 1000000007;
+    public static long dice(long n,long[] dp){
+           if(n<0) return 0;
+           if(n == 0) return 1;
+           if(dp[(int)n] != -1) return dp[(int)n];
+           long count = 0;
+           for(int i = 1;i<=6;i++){
+              count += (dice(n-i,dp) % inff);
+           }
+           dp[(int)n] = count % inff;
+           return dp[(int)n];
+    }   
+           
     public static void main(String[] args) {
-        IO sc = new IO();
-
-        // Example usage
-        int a = sc.nextInt();
-        long b = sc.nextLong();
-        float f = sc.nextFloat();
-        double d = sc.nextDouble();
-        char c = sc.nextChar();
-        String word = sc.next();
-        String line = sc.nextLine();
-
-        sc.println("Int: " + a);
-        sc.println("Long: " + b);
-        sc.println("Float: " + f);
-        sc.println("Double: " + d);
-        sc.println("Char: " + c);
-        sc.println("Word: " + word);
-        sc.println("Line: " + line);
-
-        sc.flush();
+        IO in = new IO();
+    
+        long n = in.nextLong();
+        long[] dp = new long[(int)(n+1)];
+        Arrays.fill(dp,-1);
+        System.out.println(dice(n,dp));
     }
 }

@@ -27,4 +27,4 @@ public class Weird {
 }
 
 
-//Use Higher data types like Long to avoid overflow issues with large numbers
+//Use Higher data types like Long to avoid overflow issues with large numbers and if task is to print larger values use string builder  instead of printing in a for loop

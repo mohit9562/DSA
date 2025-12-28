@@ -1,10 +1,6 @@
-package Contests;
-import java.io.*;
+ import java.io.*;
 import java.util.*;
-
-
-public class Main {
-    static class IO {
+ class IO {
         BufferedReader br;
         StringTokenizer st;
         PrintWriter out;
@@ -14,8 +10,8 @@ public class Main {
             out = new PrintWriter(System.out);
         }
 
-        // Input methods
-        String sol() { // single word
+        
+        String sol() { 
             while (st == null || !st.hasMoreTokens()) {
                 try { st = new StringTokenizer(br.readLine()); }
                 catch (IOException e) { e.printStackTrace(); }
@@ -28,40 +24,37 @@ public class Main {
         float nextFloat() { return Float.parseFloat(sol()); }
         double nextDouble() { return Double.parseDouble(sol()); }
         char nextChar() { return sol().charAt(0); }
-        String next() { return sol(); } // single word
-        String nextLine() { // full line
+        String next() { return sol(); } 
+        String nextLine() { 
             String str = "";
             try { str = br.readLine(); }
             catch (IOException e) { e.printStackTrace(); }
             return str;
         }
 
-        // Output methods
+    
         void print(Object o) { out.print(o); }
         void println(Object o) { out.println(o); }
         void flush() { out.flush(); }
     }
-
-    public static void main(String[] args) {
-        IO sc = new IO();
-
-        // Example usage
-        int a = sc.nextInt();
-        long b = sc.nextLong();
-        float f = sc.nextFloat();
-        double d = sc.nextDouble();
-        char c = sc.nextChar();
-        String word = sc.next();
-        String line = sc.nextLine();
-
-        sc.println("Int: " + a);
-        sc.println("Long: " + b);
-        sc.println("Float: " + f);
-        sc.println("Double: " + d);
-        sc.println("Char: " + c);
-        sc.println("Word: " + word);
-        sc.println("Line: " + line);
-
-        sc.flush();
+public class ReadingBooks {
+    public static long maxBooks(int[] arr){
+      Arrays.sort(arr);
+      long sum = 0;
+      for(int i = 0;i<arr.length;i++){
+        sum += arr[i];
+      }
+      return (long)Math.max(sum,2*arr[arr.length - 1]);
     }
+  public static void main(String[] args) {
+    IO in = new IO();
+    long size = in.nextInt();
+    int[] arr = new int[(int)size];
+    for (int i = 0; i < size; i++) {
+        arr[i] = in.nextInt();
+    }
+    long result = maxBooks(arr);
+    in.println(result);
+    in.flush();
+  }    
 }

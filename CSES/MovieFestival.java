@@ -1,10 +1,14 @@
-package Contests;
-import java.io.*;
 import java.util.*;
-
-
-public class Main {
-    static class IO {
+import java.io.*;
+class Movie{
+    long start;
+    long end;
+    Movie(long start,long end){
+        this.start=start;
+        this.end=end;
+    }
+}
+ class IO {
         BufferedReader br;
         StringTokenizer st;
         PrintWriter out;
@@ -14,8 +18,8 @@ public class Main {
             out = new PrintWriter(System.out);
         }
 
-        // Input methods
-        String sol() { // single word
+        
+        String sol() { 
             while (st == null || !st.hasMoreTokens()) {
                 try { st = new StringTokenizer(br.readLine()); }
                 catch (IOException e) { e.printStackTrace(); }
@@ -28,40 +32,41 @@ public class Main {
         float nextFloat() { return Float.parseFloat(sol()); }
         double nextDouble() { return Double.parseDouble(sol()); }
         char nextChar() { return sol().charAt(0); }
-        String next() { return sol(); } // single word
-        String nextLine() { // full line
+        String next() { return sol(); } 
+        String nextLine() { 
             String str = "";
             try { str = br.readLine(); }
             catch (IOException e) { e.printStackTrace(); }
             return str;
         }
 
-        // Output methods
+    
         void print(Object o) { out.print(o); }
         void println(Object o) { out.println(o); }
         void flush() { out.flush(); }
     }
-
+public class MovieFestival {
     public static void main(String[] args) {
-        IO sc = new IO();
+        IO in = new IO();
+        int n = in.nextInt();
+        Movie[] arr = new Movie[n];
+        for(int i=0;i<n;i++){
+            long start = in.nextLong();
+            long end = in.nextLong();
+            arr[i]= new Movie(start,end);
+        }
+        Arrays.sort(arr,(a,b)->{
+            return Long.compare(a.end,b.end);
+        });
+        int count = 0;
+        long time = 0;
+        for(int i = 0;i<n;i++){
+            if(arr[i].start >= time){
+                count++;
+                time = (int)arr[i].end;
+            }
+        }
+        System.out.println(count);
 
-        // Example usage
-        int a = sc.nextInt();
-        long b = sc.nextLong();
-        float f = sc.nextFloat();
-        double d = sc.nextDouble();
-        char c = sc.nextChar();
-        String word = sc.next();
-        String line = sc.nextLine();
-
-        sc.println("Int: " + a);
-        sc.println("Long: " + b);
-        sc.println("Float: " + f);
-        sc.println("Double: " + d);
-        sc.println("Char: " + c);
-        sc.println("Word: " + word);
-        sc.println("Line: " + line);
-
-        sc.flush();
     }
 }

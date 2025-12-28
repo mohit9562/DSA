@@ -1,10 +1,8 @@
-package Contests;
-import java.io.*;
+package CSES;
 import java.util.*;
-
-
-public class Main {
-    static class IO {
+import java.io.*;
+public class FerrisWheel {
+      static class IO {
         BufferedReader br;
         StringTokenizer st;
         PrintWriter out;
@@ -14,8 +12,8 @@ public class Main {
             out = new PrintWriter(System.out);
         }
 
-        // Input methods
-        String sol() { // single word
+        
+        String sol() { 
             while (st == null || !st.hasMoreTokens()) {
                 try { st = new StringTokenizer(br.readLine()); }
                 catch (IOException e) { e.printStackTrace(); }
@@ -28,40 +26,63 @@ public class Main {
         float nextFloat() { return Float.parseFloat(sol()); }
         double nextDouble() { return Double.parseDouble(sol()); }
         char nextChar() { return sol().charAt(0); }
-        String next() { return sol(); } // single word
-        String nextLine() { // full line
+        String next() { return sol(); } 
+        String nextLine() { 
             String str = "";
             try { str = br.readLine(); }
             catch (IOException e) { e.printStackTrace(); }
             return str;
         }
 
-        // Output methods
+    
         void print(Object o) { out.print(o); }
         void println(Object o) { out.println(o); }
         void flush() { out.flush(); }
     }
 
+
+
+    public static long ferrisWheel(long[] arr, long limit) {
+        Arrays.sort(arr);
+        int l = 0;
+        int j = arr.length - 1;
+        long count = 0;
+
+        while (l <= j) {
+            if (arr[l] + arr[j] <= limit) {
+                l++;   
+            }
+            j--;       
+            count++;
+        }
+
+        return count;
+    }
+
     public static void main(String[] args) {
-        IO sc = new IO();
+        IO in = new IO();
 
-        // Example usage
-        int a = sc.nextInt();
-        long b = sc.nextLong();
-        float f = sc.nextFloat();
-        double d = sc.nextDouble();
-        char c = sc.nextChar();
-        String word = sc.next();
-        String line = sc.nextLine();
+        long size = in.nextLong();
+        long limit = in.nextLong();
 
-        sc.println("Int: " + a);
-        sc.println("Long: " + b);
-        sc.println("Float: " + f);
-        sc.println("Double: " + d);
-        sc.println("Char: " + c);
-        sc.println("Word: " + word);
-        sc.println("Line: " + line);
+        long[] arr = new long[(int)size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = in.nextLong();
+        }
 
-        sc.flush();
+        System.out.println(ferrisWheel(arr, limit));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+  
