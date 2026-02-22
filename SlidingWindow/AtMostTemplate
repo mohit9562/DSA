@@ -1,0 +1,27 @@
+l = 0
+state = 0
+count = 0
+
+for r = 0 → n-1:
+    add element at r to state
+
+    while state > K:
+        remove element at l from state
+        l++
+
+    // all subarrays ending at r starting from l..r are valid
+    count += (r - l + 1)
+
+
+// for exactly Problems
+  exactly K = atMost(K) − atMost(K−1)
+
+  // for atLeast Problems
+    atLeast K = total subarrays − atMost(K−1)
+
+
+Does removing from left always make the window “better”?
+                |
+              YES → Sliding Window
+                |
+              NO  → Prefix Sum + HashMap

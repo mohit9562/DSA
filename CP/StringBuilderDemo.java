@@ -16,7 +16,7 @@ public class StringBuilderDemo {
         System.out.println("insert(): " + sb);   // Hello, World
 
         // ✅ 4. delete()
-        sb.delete(5, 6);
+        sb.delete(5, 7);
         System.out.println("delete(): " + sb);   // Hello World
 
         // ✅ 5. deleteCharAt()
@@ -58,7 +58,7 @@ public class StringBuilderDemo {
         System.out.println("ensureCapacity(): " + sb.capacity());
 
         // ✅ 15. indexOf()
-        System.out.println("indexOf(\"World\"): " + sb.indexOf("World"));
+        System.out.println("indexOf(\"World\"): " + sb.indexOf("ll"));
 
         // ✅ 16. lastIndexOf()
         System.out.println("lastIndexOf(\"l\"): " + sb.lastIndexOf("l"));
@@ -68,11 +68,11 @@ public class StringBuilderDemo {
         System.out.println("toString(): " + normalString);
 
         // ✅ 18. setLength() (truncate or expand)
-        sb.setLength(5);
+        sb.setLength(25);
         System.out.println("setLength(5): " + sb); // Hello
 
         // ✅ 19. Clear StringBuilder
-        sb.setLength(0);
+        sb.setLength(3);
         System.out.println("clear(): " + sb); // empty
 
         // ✅ 20. Append numbers and chars
