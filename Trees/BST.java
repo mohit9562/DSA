@@ -10,16 +10,15 @@ class Node{
      this.right = null;
    }  
 }
-public class BFS {
+public class BST {
     static int idx = 0;
-    public static Node buildTree(int[] arr){
-        if(idx >= arr.length || arr[idx] == -1){
-            idx++;
-            return null;
+    public static Node buildTree(Node root,int val){
+        if(root == null) return new Node(val);
+        if(val < root.data){
+            root.left = buildTree(root.left,val);
+        }else{
+            root.right = buildTree(root.right,val);
         }
-        Node root = new Node(arr[idx++]);
-        root.left = buildTree(arr);
-        root.right = buildTree(arr);
         return root;
     }
     public static void bfs(Node root) {
@@ -49,7 +48,10 @@ public class BFS {
         String[] s = in.nextLine().strip().split(" ");
         int[] arr = new int[s.length];
         for(int i = 0;i<arr.length;i++) arr[i] = Integer.parseInt(s[i]);
-        Node root = buildTree(arr);
+        Node root = null;
+        for(int i =0;i<arr.length;i++){
+            buildTree(root,arr[i]);
+        }
         bfs(root);
 
     }

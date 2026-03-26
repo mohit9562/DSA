@@ -18,7 +18,6 @@ class IO {
             }
             return st.nextToken();
         }
-
         int nextInt() { return Integer.parseInt(sol()); }
         long nextLong() { return Long.parseLong(sol()); }
         float nextFloat() { return Float.parseFloat(sol()); }
@@ -31,8 +30,6 @@ class IO {
             catch (IOException e) { e.printStackTrace(); }
             return str;
         }
-
-    
         void print(Object o) { out.print(o); }
         void println(Object o) { out.println(o); }
         void flush() { out.flush(); }
@@ -53,10 +50,16 @@ public class DiceCombinations {
            
     public static void main(String[] args) {
         IO in = new IO();
-    
         long n = in.nextLong();
         long[] dp = new long[(int)(n+1)];
-        Arrays.fill(dp,-1);
-        System.out.println(dice(n,dp));
+        dp[0] = 1;
+
+        for(int i = 1;i<=n;i++){
+            for(int j = 1;j<=6;j++){
+                if(i-j < 0) break;
+                dp[i] = (dp[i]+dp[i-j] )%inff;
+            }
+        }
+        System.out.println(dp[(int)n]);
     }
 }
