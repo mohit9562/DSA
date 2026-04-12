@@ -22,7 +22,7 @@ class DSU {
 
     void union(int a, int b) {
         int pa = find(a);
-        int pb = find(b);1111111111111111111111111111
+        int pb = find(b);
 
         if (pa == pb) return;
         // union by size
